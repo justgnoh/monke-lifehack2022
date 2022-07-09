@@ -1,15 +1,36 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import Hero from "./components/Hero";
+import Information from "./components/Information";
+import NavBar from "./components/NavBar";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
-const theme = extendTheme ({
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+const theme = extendTheme({
   config: {
-    initialColorMode: 'dark'
-  }
+    initialColorMode: "dark",
+  },
 });
 
 function App() {
   return (
-    <ChakraProvider theme = {theme} >
-      <h1>Monke App</h1>
+    <ChakraProvider theme={theme}>
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route path="/">
+            <Hero />
+            <Information />
+          </Route>
+          <Route path="/map">
+
+          </Route>
+          <Route path="/account">
+            
+          </Route>
+        </Switch>
+        {/* <ThemeSwitcher/> */}
+      </Router>
     </ChakraProvider>
   );
 }
